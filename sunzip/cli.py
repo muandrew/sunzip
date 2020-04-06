@@ -2,6 +2,7 @@ import argparse
 import sunzip
 import sys
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("zip_file", help="the zip archive to unzip safely")
@@ -46,11 +47,11 @@ def main():
     if args.max_compression_ratio:
         zip_archive.threshold = args.max_compression_ratio
     if args.max_cpu_seconds:
-        zip_archive.cpu =  args.max_cpu_seconds
+        zip_archive.cpu = args.max_cpu_seconds
     if args.max_memory_bytes:
         zip_archive.memory = args.max_memory_bytes
     if args.max_disk_space_bytes:
-        zip_archive.filesize  = args.max_disk_space_bytes
+        zip_archive.filesize = args.max_disk_space_bytes
     if args.output_dir:
         zip_archive.output_dir = args.output_dir
     if args.verbose:
