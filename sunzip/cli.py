@@ -41,7 +41,7 @@ def main():
     )
     args = parser.parse_args()
 
-    zip_archive = sunzip.sunzip(args.zip_file)
+    zip_archive = sunzip.Sunzip(args.zip_file)
 
     if args.max_compression_ratio:
         zip_archive.threshold = args.max_compression_ratio
@@ -54,7 +54,7 @@ def main():
     if args.output_dir:
         zip_archive.output_dir = args.output_dir
     if args.verbose:
-        zip_archive.debug = sunzip.sunzip.LOG_TRACE
+        zip_archive.debug = sunzip.Sunzip.LOG_TRACE
 
     try:
         zip_archive.extract()

@@ -16,7 +16,7 @@ MAX_FILESIZE_USAGE = 134217728
 MAX_THRESHOLD = 100
 
 
-class sunzip():
+class Sunzip():
 
     # details finer than debug
     LOG_TRACE=3
@@ -177,9 +177,9 @@ class sunzip():
 
         # Defense Layer 3 - Filetype-specific mitigations.
         if (status is True):
-            self.log_debug(sunzip.LOG_INFO, "All rules have checked completely. Start to unzipping.")
+            self.log_debug(Sunzip.LOG_INFO, "All rules have checked completely. Start to unzipping.")
             self.zip_file.extractall(path=self.output_dir)
-            self.log_debug(sunzip.LOG_INFO, "Extraction complete.")
+            self.log_debug(Sunzip.LOG_INFO, "Extraction complete.")
 
 
 class ZipFilePitfall(Exception):
