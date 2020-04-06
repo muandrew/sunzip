@@ -1,5 +1,6 @@
 import argparse
 import sunzip
+import sys
 
 def main():
     parser = argparse.ArgumentParser()
@@ -55,4 +56,8 @@ def main():
     if args.verbose:
         zip_archive.debug = sunzip.sunzip.LOG_TRACE
 
-    zip_archive.extract()
+    try:
+        zip_archive.extract()
+    except Exception as e:
+        print(e)
+        sys.exit(1)

@@ -144,46 +144,31 @@ class sunzip():
 
         # Check if the file format is expected for context.
 
-        try:
-            if(self.check_is_zipfile()):
-                status = True
-            else:
-                raise ZipFilePitfall("File type is not zip format.")
-        except Exception as e:
-            print(e)
-            sys.exit(0)
+        
+        if(self.check_is_zipfile()):
+            status = True
+        else:
+            raise ZipFilePitfall("File type is not zip format.")
 
         # Check if it's a nested zip file.
-        try:
-            if(self.check_is_nested()):
-                status = True
-            else:
-                raise ZipFilePitfall("Zip file contains nested zip file.")
-        except Exception as e:
-            print(e)
-            sys.exit(0)
+        if(self.check_is_nested()):
+            status = True
+        else:
+            raise ZipFilePitfall("Zip file contains nested zip file.")
 
         # Check if the compression ratio is greater than threshold.
-        try:
-            if(self.get_compression_ratio() <= self.max_threshold):
-                status = True
-            else:
-                raise ZipFilePitfall(
-                    "Compression ratio is greater than threshold.")
-        except Exception as e:
-            print(e)
-            sys.exit(0)
+        if(self.get_compression_ratio() <= self.max_threshold):
+            status = True
+        else:
+            raise ZipFilePitfall(
+                "Compression ratio is greater than threshold.")
 
         # Check if the upload file size exceeds the maximum limit.
-        try:
-            if(self.get_zip_file_size() <= self.max_filesize_usage):
-                status = True
-            else:
-                raise ZipFilePitfall(
-                    "File size exceeds the maximum limit.")
-        except Exception as e:
-            print(e)
-            sys.exit(0)
+        if(self.get_zip_file_size() <= self.max_filesize_usage):
+            status = True
+        else:
+            raise ZipFilePitfall(
+                "File size exceeds the maximum limit.")
 
         # Defense Layer 2 - Limit the number of resources available to a
         # process and its child process.
